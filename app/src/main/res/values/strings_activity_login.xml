@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Strings related to login -->
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Unlock</string>
+    <string name="action_sign_in_short">Unlock</string>
+    <string name="action_clear_db">Clear All Data</string>
+
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+</resources>

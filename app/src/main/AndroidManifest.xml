@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sun_post.mypasswordmanager" >
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LoginActivity"
+            android:label="My Password Manager"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PasswordSetupActivity"
+            android:label="Choose master password"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name=".ViewPasswordsActivity"
+            android:label="Your passwords"
+            android:parentActivityName=".LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sun_post.mypasswordmanager.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".AddPasswordActivity"
+            android:label="Add passwords"
+            android:parentActivityName=".ViewPasswordsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sun_post.mypasswordmanager.ViewPasswordsActivity" />
+        </activity>
+        <activity
+            android:name=".ChangeMasterPasswordActivity"
+            android:label="Change master password"
+            android:parentActivityName=".ViewPasswordsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sun_post.mypasswordmanager.ViewPasswordsActivity" />
+        </activity>
+
+        <provider
+            android:name=".EmailBackupProvider"
+            android:authorities="com.sun_post.mypasswordmanager.backuprovider"
+            android:enabled="true"
+            android:exported="true" >
+        </provider>
+
+        <activity
+            android:name=".DataImportActivity"
+            android:label="" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="file" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.mypwman" />
+                <data android:host="*" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
